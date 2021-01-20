@@ -1,14 +1,23 @@
-import { useEffect } from 'react';
-import Three from '../lib/three/Three';
-import styles from '../styles/Home.module.css';
+import { useContext, useEffect } from 'react';
+import GlobalContext from '../contexts/GlobalContext';
+import UIControlBar from '../components/UIControlBar';
+import PentagonController from '../lib/PentagonController';
+
+import styles from '../styles/pages/Home.module.css';
 
 const Home = () => {
-  useEffect(() => {
-    new Three();
+  const { updateContextData } = useContext(GlobalContext);
+
+  useEffect(async () => {
+    const pentagonController = new PentagonController();
+    updateContextData({ pentagonController });
+    await pentagonController.boot();
   }, []);
+
   return (
     <div className={styles.container}>
-      <div id="threejs"></div>
+      <UIControlBar />
+      <div id="pentagon-app"></div>
     </div>
   );
 };
