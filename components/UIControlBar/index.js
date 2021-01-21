@@ -35,7 +35,6 @@ const UIControlBar = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.logo}>LG</div>
       <div className={`${styles.button} ${styles.vr}`}>VR</div>
       <div
         className={`${styles.button} ${
