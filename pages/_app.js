@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import GlobalContext from '../contexts/GlobalContext';
+import PentagonController from '../lib/PentagonController';
 
 import '../styles/globals.css';
 
 const defaultContextData = {
   pentagonController: null,
+  uiMode: PentagonController.UIModes.translate,
 };
 
 const App = ({ Component, pageProps }) => {
