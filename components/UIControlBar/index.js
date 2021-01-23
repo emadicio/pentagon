@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import GlobalContext from '../../contexts/GlobalContext';
 import PentagonController from '../../lib/PentagonController';
 const { UIModes } = PentagonController;
@@ -13,29 +13,33 @@ const UIControlBar = () => {
 
   const onClickVRButton = () => {
     if (uiMode === UIModes.vr) return;
+    setUIMode(UIModes.vr);
 
-    updateContextData({
-      uiMode: UIModes.vr,
-    });
-    pentagonController.setUIMode(UIModes.vr);
+    document.addEventListener(
+      'mousedown',
+      () => {
+        console.log('ciao');
+        setUIMode(UIModes.translate);
+      },
+      { capture: true, once: true }
+    );
   };
 
   const onClickTranslateButton = () => {
     if (uiMode === UIModes.translate) return;
-
-    updateContextData({
-      uiMode: UIModes.translate,
-    });
-    pentagonController.setUIMode(UIModes.translate);
+    setUIMode(UIModes.translate);
   };
 
   const onClickRotateButton = () => {
     if (uiMode === UIModes.rotate) return;
+    setUIMode(UIModes.rotate);
+  };
 
+  const setUIMode = (uiMode) => {
     updateContextData({
-      uiMode: PentagonController.UIModes.rotate,
+      uiMode,
     });
-    pentagonController.setUIMode(UIModes.rotate);
+    pentagonController.setUIMode(uiMode);
   };
 
   const onClickResetButton = () => {
