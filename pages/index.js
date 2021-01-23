@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import GlobalContext from '../contexts/GlobalContext';
+import Head from '../components/Head';
 import UIControlBar from '../components/UIControlBar';
 import PentagonController from '../lib/PentagonController';
 
@@ -16,6 +17,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <Head />
       <UIControlBar />
       <div id="pentagon-app"></div>
     </div>
