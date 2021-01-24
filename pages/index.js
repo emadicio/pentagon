@@ -4,9 +4,13 @@ import Head from '../components/Head';
 import UIControlBar from '../components/UIControlBar';
 import UIVRInstructions from '../components/UIVRInstructions';
 import PentagonController from '../lib/PentagonController';
+import { preloadImages } from '../lib/utils';
+
 const { UIModes } = PentagonController;
 
 import styles from '../styles/pages/Home.module.css';
+
+const SCENERIES = require('../public/api/sceneries.json');
 
 const Home = () => {
   const {
@@ -16,8 +20,19 @@ const Home = () => {
 
   useEffect(async () => {
     const pentagonController = new PentagonController();
-    updateContextData({ pentagonController });
-    await pentagonController.boot();
+
+    // TODO Fetch thtis data instead
+    const sceneries = SCENERIES;
+
+    const currentScenery = sceneries[0];
+    updateContextData({
+      pentagonController,
+      sceneries,
+      currentScenery,
+    });
+    await pentagonController.boot(currentScenery);
+
+    preloadImages(sceneries.map((scenery) => scenery.preview.image));
   }, []);
 
   return (

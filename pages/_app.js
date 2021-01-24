@@ -7,6 +7,8 @@ import '../styles/globals.css';
 const defaultContextData = {
   pentagonController: null,
   uiMode: PentagonController.UIModes.translate,
+  sceneries: [],
+  currentScenery: {},
 };
 
 const App = ({ Component, pageProps }) => {
