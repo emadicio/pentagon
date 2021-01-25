@@ -5,6 +5,9 @@ const { UIModes } = PentagonController;
 
 import styles from './UIControlBar.module.scss';
 
+/*
+ * Control Bar UI Component
+ */
 const UIControlBar = () => {
   const {
     contextData: { pentagonController, uiMode, sceneries, currentScenery },
@@ -28,6 +31,9 @@ const UIControlBar = () => {
     if (uiMode === UIModes.vr) return;
     setUIMode(UIModes.vr);
 
+    /*
+     * Exit VR mode on click
+     */
     document.addEventListener('mousedown', () => setUIMode(UIModes.translate), {
       capture: true,
       once: true,

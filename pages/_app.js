@@ -4,6 +4,9 @@ import PentagonController from '../lib/PentagonController';
 
 import '../styles/globals.css';
 
+/*
+ * Default global state
+ */
 const defaultContextData = {
   pentagonController: null,
   uiMode: PentagonController.UIModes.translate,

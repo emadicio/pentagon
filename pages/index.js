@@ -10,6 +10,7 @@ const { UIModes } = PentagonController;
 
 import styles from '../styles/pages/Home.module.css';
 
+// TODO: Fetch this data from an API. A GraphQL one maybe?
 const SCENERIES = require('../public/api/sceneries.json');
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
     });
     await pentagonController.boot(currentScenery);
 
+    // Preload preview images to avoid flickering on scenery switch
     preloadImages(sceneries.map((scenery) => scenery.preview.image));
   }, []);
 

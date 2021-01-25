@@ -1,5 +1,7 @@
 import NextHead from 'next/head';
-
+/*
+ * Document Head Component
+ */
 const Head = () => {
   return (
     <NextHead>

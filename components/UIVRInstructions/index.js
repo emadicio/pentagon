@@ -1,5 +1,8 @@
 import styles from './UIVRInstructions.module.scss';
 
+/*
+ * VR Instructions UI Component
+ */
 const UIVRInstructons = () => {
   return (
     <div className={styles.wrapper}>
